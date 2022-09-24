@@ -21,3 +21,4 @@ Wordle for General Assembly
 - Random choose word from word list => split to array.
 - Take input from keyboard (click & keydown).
 - Input from user to store into array?
+- Iterate through word & input => match? include? => work with the View.

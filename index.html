@@ -4,16 +4,102 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/4dccacf12f.js" crossorigin="anonymous"></script>
+    <script defer src="./app.js"></script>
     <title>Wordle Clone</title>
 </head>
 <body>
-    <h1>Wordle</h1>
+    <header>
+        <img src="https://freewordle.org/images/wordle-game-icon-512.png" alt="logo">
+        <h1>Wordle</h1>
+    </header>
     <main>
         <div class="gameboard">
+            <div class="game-row" id="game-row-0">
+                <div class="box" data-id="0"></div>
+                <div class="box" data-id="1"></div>
+                <div class="box" data-id="2"></div>
+                <div class="box" data-id="3"></div>
+                <div class="box" data-id="4"></div>
+            </div>
+
+            <div class="game-row" id="game-row-1">
+                <div class="box" data-id="5"></div>
+                <div class="box" data-id="6"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+
+            <div class="game-row" id="game-row-2">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+
+            <div class="game-row" id="game-row-3">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+
+            <div class="game-row" id="game-row-4">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+
+            <div class="game-row" id="game-row-5">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
 
         </div>
         <div class="keyboard">
-            
+            <div class="row" id="row-0">
+                <button class="key">Q</button>
+                <button class="key">W</button>
+                <button class="key">E</button>
+                <button class="key">R</button>
+                <button class="key">T</button>
+                <button class="key">Y</button>
+                <button class="key">U</button>
+                <button class="key">I</button>
+                <button class="key">O</button>
+                <button class="key">P</button>
+            </div>
+            <div class="row" id="row-1">
+                <button class="key">A</button>
+                <button class="key">S</button>
+                <button class="key">D</button>
+                <button class="key">F</button>
+                <button class="key">G</button>
+                <button class="key">H</button>
+                <button class="key">J</button>
+                <button class="key">K</button>
+                <button class="key">L</button>
+            </div>
+            <div class="row" id="row-2">
+                <button class="key" id="enter">Enter</button>
+                <button class="key">Z</button>
+                <button class="key">X</button>
+                <button class="key">C</button>
+                <button class="key">V</button>
+                <button class="key">B</button>
+                <button class="key">N</button>
+                <button class="key">M</button>
+                <button class="key" id="delete"><i class="fa-solid fa-delete-left"></i></button>
+            </div>
         </div>
     </main>
 </body>
