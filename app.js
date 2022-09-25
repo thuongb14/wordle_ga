@@ -7,13 +7,13 @@ let currentId = 0;
 let numberWordLeft = 5;
 const box = document.querySelectorAll('.box');
 
-
 let gameModule = (() => {
   const handleKeyInput = (e) => {
     if(isGameActive) {
       let keyInput = e.key.toUpperCase();
       if (keyInput === 'ENTER') {
-        checkGuess();
+        checkGuess();  
+        isGameActive = true
       }
       if (keyInput.match(/^[a-zA-Z()]+$/) && keyInput.length === 1) {
         appendText(keyInput);
@@ -29,7 +29,7 @@ let gameModule = (() => {
         if (item.dataset.row == currentRow && item.dataset.id == currentId) {
           item.textContent = key;   
         }
-      });
+      });      
       guessArr.push(key)
       numberWordLeft--
       currentId++
@@ -37,21 +37,17 @@ let gameModule = (() => {
   }
 
   const checkGuess = () => {
-    if (isGameActive) {
-      isGameActive = false;
-      console.log(guessArr)
-      console.log(correctArr)
-    }
-    resetRow()
+      isGameActive = false
+      console.log('check')
+      resetRow()
   }
 
   const resetRow = () => {
-    if(!isGameActive) {
+    if(!isGameActive && currentId == 5) {
       currentId = 0;
-      currentRow += 1;
       numberWordLeft = 5;
-      isGameActive = true;
       guessArr = []
+      currentRow++
     }
   }
   
