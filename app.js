@@ -56,6 +56,7 @@ let gameModule = (() => {
   };
 
   const checkGuess = () => {
+    let box = document.querySelectorAll(`[data-row="${currentRow}"]`)
     isGameActive = false;
     for (let i = 0; i < correctArr.length; i++) {
       if (guessArr[i] === correctArr[i]) {
