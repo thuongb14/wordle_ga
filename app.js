@@ -6,14 +6,19 @@ let correctArr = correctWord.split('');
 let currentId = 0;
 let numberWordLeft = 5;
 const box = document.querySelectorAll('.box');
+const keyBoard = document.querySelector('.keyboard');
 
 let gameModule = (() => {
   const handleKeyInput = (e) => {
     if (isGameActive) {
       let keyInput = e.key.toUpperCase();
-      if (keyInput === 'ENTER' && currentId == 5) {
-        checkGuess();
-        isGameActive = true;
+      if (keyInput === 'ENTER') {
+        if (currentId == 5) {
+          checkGuess();
+          isGameActive = true;
+        } else if (currentId < 5) {
+          alert();
+        }
       }
       if (keyInput.match(/^[a-zA-Z()]+$/) && keyInput.length === 1) {
         appendText(keyInput);
@@ -24,6 +29,15 @@ let gameModule = (() => {
         return;
       }
     }
+  };
+
+  const alert = () => {
+    let alert = document.createElement('p');
+    alert.textContent = 'NOT ENOUGH LETTER';
+    keyBoard.insertAdjacentElement('afterbegin', alert);
+    setTimeout(function () {
+      document.querySelector('p').remove();
+    }, 800);
   };
 
   const appendText = (key) => {
@@ -56,18 +70,13 @@ let gameModule = (() => {
   };
 
   const checkGuess = () => {
-    let box = document.querySelectorAll(`[data-row="${currentRow}"]`)
+    let box = document.querySelectorAll(`[data-row="${currentRow}"]`);
     isGameActive = false;
     for (let i = 0; i < correctArr.length; i++) {
       if (guessArr[i] === correctArr[i]) {
-        box[i].classList.add('correct');
-      }
-      if (
-        guessArr.includes(correctArr[i]) &&
-        box[i].textContent !== correctArr[i]
-      ) {
-        box[i].classList.add('valid');
-      } else if (!guessArr.includes(correctArr[i])) {
+          box[i].classList.add('correct');
+        }
+     else {
         box[i].classList.add('invalid');
       }
     }
