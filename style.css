@@ -46,6 +46,8 @@ p {
     align-items: center;
     font-size: 30px;
     font-weight: bold;
+    
+    
 }
 
 .game-row {
@@ -91,13 +93,35 @@ p {
 }
 
 .valid {
-    background-color: var(--color-valid);
+    animation-name: valid;
+    animation-duration: 300ms;  
+    animation-fill-mode: forwards;  
 }
 
 .correct {
-    background-color: var(--color-corect);
+    animation-name: correct;
+    animation-duration: 300ms;  
+    animation-fill-mode: forwards;  
 }
 
 .invalid {
-    background-color: var(--color-invalid);
+    animation-name: invalid;
+    animation-duration: 300ms;  
+    animation-fill-mode: forwards;  
 }
+
+@keyframes valid {
+    from {background-color: white;}
+    to {background-color: var(--color-valid);}
+  }
+
+  @keyframes correct {
+    from {background-color: white;}
+    to {background-color: var(--color-corect);}
+  }
+
+  @keyframes invalid {
+    from {background-color: white;}
+    to {background-color: var(--color-invalid);}
+  }
+

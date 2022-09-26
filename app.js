@@ -8,15 +8,7 @@ let numberWordLeft = 5;
 const box = document.querySelectorAll('.box');
 const keyBoard = document.querySelector('.keyboard');
 
-
-
 let gameModule = (() => {
-
-  const makeBoard = () => {
-    let gameRow = document.createElement('div')
-    gameRow.classList.add('game-row')
-  }
-
   const handleKeyInput = (e) => {
     if (isGameActive) {
       let keyInput = e.key.toUpperCase();
@@ -80,29 +72,33 @@ let gameModule = (() => {
   const checkGuess = () => {
     let box = document.querySelectorAll(`[data-row="${currentRow}"]`);
     isGameActive = false;
-    let filter = correctArr.filter((item) => guessArr.includes(item));
+    let dupWord = [];
     for (let i = 0; i < correctArr.length; i++) {
-      let position = correctArr.indexOf(guessArr[i])
-      if(position === -1) {
-        box[i].classList.add('invalid')
-      } else  {
-        if(correctArr[i] === guessArr[i]) {
-          box[i].classList.add('correct')
+      let position = correctArr.indexOf(guessArr[i]);
+      if (position === -1) {
+        box[i].classList.add('invalid');
+      } else {
+        if (correctArr[i] === guessArr[i]) {
+          box[i].classList.add('correct');
+          dupWord.push(box[i].textContent);
         } else {
-          box[i].classList.add('valid')
+          box[i].classList.add('valid');
+
+        }
+        if(dupWord.includes(box[i].textContent) && box[i].classList.contains('valid')) {
+          console.log(box[i])
+          box[i].classList.add('invalid')
         }
       }
-
     }
 
-    console.log(filter)
-    
+    console.log(dupWord);
+
     console.log(`guess: ${guessArr}`);
     console.log(`correct: ${correctArr}`);
 
     resetRow();
-
-  }
+  };
 
   const resetRow = () => {
     if (!isGameActive) {
