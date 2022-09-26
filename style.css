@@ -82,7 +82,6 @@ p {
     cursor: pointer;
 }
 
-
 #row-1 {
     width: 450px;
 }
@@ -91,17 +90,13 @@ p {
     background-color: rgb(172, 172, 172);
 }
 
-
 .valid {
     background-color: var(--color-valid);
 }
 
-
-
 .correct {
     background-color: var(--color-corect);
 }
-
 
 .invalid {
     background-color: var(--color-invalid);
