@@ -1,140 +1,169 @@
 * {
-    --color-corect: #6aaa64;
-    --color-valid: #c9b458;
-    --color-invalid: grey;
+  --color-corect: #6aaa64;
+  --color-valid: #c9b458;
+  --color-invalid: grey;
 }
 body {
-    box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 header {
-    width: 100%;
-    border-bottom: 1px solid rgb(179, 179, 179);
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  width: 100%;
+  border-bottom: 1px solid rgb(179, 179, 179);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-img {
-    width: 3rem;
+.logo {
+  margin-left: 3rem;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-p {
-    margin: 0;
-    color: red;
-    font-size: smaller;
-}
-
-.gameboard {
-    padding-top: 2rem;
-    margin: 0 auto;
-    width: 280px;
-    height: 340px;
-    display: grid;
-    grid-template-rows: repeat(6,1fr);
-    grid-gap: 5px;
-}
-
-.box {
-    display: grid;
-    border: 1px solid rgb(218, 217, 217);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    
-    
-}
-
-.game-row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5px;
-}
-
-.keyboard {
-    margin-top: 2rem;
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-}
-
-.row {
-    width: 500px;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-}
-
-.key {
-    width: 100%;
-    height: 60px;
-    font-size: 15px;
-    font-weight: bold;
-    border: none;
-    padding: 10px;
-    border-radius: 3px;
+.guide {
+    justify-self: flex-end;
+    margin-right: 2rem;
     cursor: pointer;
 }
 
+img {
+  width: 3rem;
+}
+
+p {
+  margin: -1rem 0 1rem 0;
+  color: red;
+  font-weight: bold;
+}
+
+.gameboard {
+  padding-top: 2rem;
+  margin: 0 auto;
+  width: 280px;
+  height: 340px;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 5px;
+}
+
+.box {
+  display: grid;
+  border: 1px solid rgb(218, 217, 217);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.game-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+}
+
+.keyboard {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.row {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.key {
+  width: 100%;
+  height: 60px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 #row-1 {
-    width: 450px;
+  width: 450px;
 }
 
 .key:hover {
-    background-color: rgb(172, 172, 172);
+  background-color: rgb(172, 172, 172);
 }
 
 .valid {
-    animation-name: valid;
-    animation-duration: 300ms;  
-    animation-fill-mode: forwards;  
+  animation-name: valid;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+  border-style: dashed;
+
 }
 
 .correct {
-    animation-name: correct;
-    animation-duration: 300ms;  
-    animation-fill-mode: forwards;  
+  animation-name: correct;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+  border-style: dashed;
 }
 
 .invalid {
-    animation-name: invalid;
-    animation-duration: 300ms;  
-    animation-fill-mode: forwards;  
+  animation-name: invalid;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
 }
 
 @keyframes valid {
-    from {background-color: white;}
-    to {background-color: var(--color-valid);}
+  from {
+    background-color: white;
   }
+  to {
+    background-color: var(--color-valid);
+  }
+}
 
-  @keyframes correct {
-    from {background-color: white;}
-    to {background-color: var(--color-corect);}
+@keyframes correct {
+  from {
+    background-color: white;
   }
+  to {
+    background-color: var(--color-corect);
+  }
+}
 
-  @keyframes invalid {
-    from {background-color: white;}
-    to {background-color: var(--color-invalid);}
+@keyframes invalid {
+  from {
+    background-color: white;
   }
+  to {
+    background-color: var(--color-invalid);
+  }
+}
 
 .modal {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content-modal {
@@ -150,28 +179,28 @@ p {
 }
 
 .content-modal > p {
-    margin-bottom: 40px;
-    font-size: 18px;
-    color: black
+  margin: 1rem 0 2rem 0;
+  font-size: 18px;
+  color: black;
 }
 
 button.reset {
-    background-color: var(--color-corect);
-    border: none;
-    border-radius: 5px;
-    width: 200px;
-    padding: 14px;
-    font-size: 16px;
-    color: white;
-    box-shadow: 0px 6px 18px -5px rgb(71, 71, 71);
-    cursor: pointer;
-  }
+  background-color: var(--color-corect);
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  padding: 14px;
+  font-size: 16px;
+  color: white;
+  box-shadow: 0px 6px 18px -5px rgb(71, 71, 71);
+  cursor: pointer;
+}
 
-  button.reset:hover {
-    box-shadow: 0px 6px 18px -1px rgb(71, 71, 71);
-    cursor: pointer;
-  }
+button.reset:hover {
+  box-shadow: 0px 6px 18px -1px rgb(71, 71, 71);
+  cursor: pointer;
+}
 
-  .hidden {
-    display: none;
-  }
+.hidden {
+  display: none;
+}

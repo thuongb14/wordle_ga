@@ -13,10 +13,15 @@
   </head>
   <body>
     <header>
-      <img
+      <div class="logo">
+        <img
         src="https://freewordle.org/images/wordle-game-icon-512.png"
         alt="logo" />
       <h1>Wordle</h1>
+      </div>
+      <div class="guide">
+        <i class="fa-2x fa-solid fa-circle-info"></i>
+      </div>
     </header>
     <main>
       <div class="gameboard">
@@ -108,20 +113,8 @@
       </div>
     </main>
     <div class="modal hidden">
-      <div class="content-modal">
-        <h2>YOU WIN!!</h2>
-        <p>The correct word is APPLE</p>
-        <button class="reset">
-          Play Again
-        </button>
+      <div class="content-modal hidden">
       </div>
-      <!-- <div class="lose-modal hidden">
-        <h2>YOU LOOSE :(</h2>
-        <p>The correct word is APPLE</p>
-        <button class="reset">
-          Play Again
-        </button>
-      </div> -->
     </div>
   </body>
 </html>
