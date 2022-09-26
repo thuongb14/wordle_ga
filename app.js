@@ -7,6 +7,8 @@ let currentId = 0;
 let numberWordLeft = 5;
 const box = document.querySelectorAll('.box');
 const keyBoard = document.querySelector('.keyboard');
+const modal = document.querySelector('.modal');
+const modalContent = document.querySelector('.content-modal');
 
 let gameModule = (() => {
   const handleKeyInput = (e) => {
@@ -15,7 +17,6 @@ let gameModule = (() => {
       if (keyInput === 'ENTER') {
         if (currentId == 5) {
           checkGuess();
-          isGameActive = true;
         } else if (currentId < 5) {
           alert();
         }
@@ -30,6 +31,10 @@ let gameModule = (() => {
       }
     }
   };
+
+  const handleKeyClick = () => {
+    
+  }
 
   const alert = () => {
     let alert = document.createElement('p');
@@ -71,7 +76,6 @@ let gameModule = (() => {
 
   const checkGuess = () => {
     let box = document.querySelectorAll(`[data-row="${currentRow}"]`);
-    isGameActive = false;
     let correctLetter = [];
     let validLetter = [];
     let invalidLetter = [];
@@ -104,12 +108,10 @@ let gameModule = (() => {
   };
 
   const resetRow = () => {
-    if (!isGameActive) {
-      currentId = 0;
-      numberWordLeft = 5;
-      guessArr = [];
-      currentRow++;
-    }
+    currentId = 0;
+    numberWordLeft = 5;
+    guessArr = [];
+    currentRow++;
   };
 
   const updateKeyboard = (correct, valid, invalid) => {
@@ -133,20 +135,49 @@ let gameModule = (() => {
     });
   };
 
+  const modalWin = () => {
+    modalContent.innerHTML = `
+    <h2>YOU WIN!!</h2>
+    <p>The correct word is ${correctWord}</p>
+    <button class="reset">
+      Play Again
+    </button>`;
+    modal.classList.remove('hidden');
+  };
+
+  const modalLose = () => {
+    modalContent.innerHTML = `
+    <h2>YOU LOSE:( </h2>
+    <p>The correct word is ${correctWord}</p>
+    <button class="reset">
+      Play Again
+    </button>`;
+    modal.classList.remove('hidden');
+  };
+
   const checkWin = () => {
     let guessWord = guessArr.join('');
     if (correctWord === guessWord) {
-      modal(e)
+      isGameActive = false;
+      modalWin();
+    } else if (currentRow == 5 && guessWord !== correctWord) {
+      isGameActive = false;
+      modalLose();
     }
   };
 
-  // const modal = (e) => {
-  //   if(e.target.)
-  // }
-
-  return { handleKeyInput };
+  const resetGame = (e) => {
+    if (e.target.classList.contains('reset')) {
+      location.reload();
+    }
+  };
+  return { handleKeyInput, resetGame };
 })();
 
 window.addEventListener('keyup', function (e) {
   gameModule.handleKeyInput(e);
+});
+
+window.addEventListener('click', function (e) {
+  gameModule.resetGame(e);
 });
