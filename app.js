@@ -83,20 +83,17 @@ let gameModule = (() => {
           dupWord.push(box[i].textContent);
         } else {
           box[i].classList.add('valid');
-
-        }
-        if(dupWord.includes(box[i].textContent) && box[i].classList.contains('valid')) {
-          console.log(box[i])
-          box[i].classList.add('invalid')
         }
       }
     }
-
-    console.log(dupWord);
-
-    console.log(`guess: ${guessArr}`);
-    console.log(`correct: ${correctArr}`);
-
+    for (let i = 0; i < 5; i++) {
+      if (
+        dupWord.includes(box[i].textContent) &&
+        box[i].classList.contains('valid')
+      ) {
+        box[i].classList.add('invalid');
+      }
+    }
     resetRow();
   };
 
