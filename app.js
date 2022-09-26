@@ -72,28 +72,34 @@ let gameModule = (() => {
   const checkGuess = () => {
     let box = document.querySelectorAll(`[data-row="${currentRow}"]`);
     isGameActive = false;
-    let dupWord = [];
+    let correctLetter = [];
+    let validLetter = [];
+    let invalidLetter = [];
     for (let i = 0; i < correctArr.length; i++) {
       let position = correctArr.indexOf(guessArr[i]);
       if (position === -1) {
         box[i].classList.add('invalid');
+        invalidLetter.push(box[i].textContent);
       } else {
         if (correctArr[i] === guessArr[i]) {
           box[i].classList.add('correct');
-          dupWord.push(box[i].textContent);
+          correctLetter.push(box[i].textContent);
         } else {
           box[i].classList.add('valid');
+          validLetter.push(box[i].textContent);
         }
       }
     }
     for (let i = 0; i < 5; i++) {
       if (
-        dupWord.includes(box[i].textContent) &&
+        correctLetter.includes(box[i].textContent) &&
         box[i].classList.contains('valid')
       ) {
         box[i].classList.add('invalid');
       }
     }
+    updateKeyboard(correctLetter, validLetter, invalidLetter);
+    checkWin();
     resetRow();
   };
 
@@ -105,6 +111,38 @@ let gameModule = (() => {
       currentRow++;
     }
   };
+
+  const updateKeyboard = (correct, valid, invalid) => {
+    let keys = document.querySelectorAll('.key');
+    keys.forEach((key) => {
+      for (let i = 0; i <= correct.length; i++) {
+        if (correct.includes(key.textContent)) {
+          key.classList.add('correct');
+        }
+      }
+      for (let i = 0; i <= valid.length; i++) {
+        if (valid.includes(key.textContent)) {
+          key.classList.add('valid');
+        }
+      }
+      for (let i = 0; i <= invalid.length; i++) {
+        if (invalid.includes(key.textContent)) {
+          key.classList.add('invalid');
+        }
+      }
+    });
+  };
+
+  const checkWin = () => {
+    let guessWord = guessArr.join('');
+    if (correctWord === guessWord) {
+      modal(e)
+    }
+  };
+
+  // const modal = (e) => {
+  //   if(e.target.)
+  // }
 
   return { handleKeyInput };
 })();
