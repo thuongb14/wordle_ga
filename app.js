@@ -23,7 +23,7 @@ let gameModule = (() => {
         if (currentId == 5) {
           checkGuess();
         } else if (currentId < 5) {
-          alert();
+          alert('NOT ENOUGH LETTERS');
         }
       }
       if (keyInput.match(/^[a-zA-Z()]+$/) && keyInput.length === 1) {
