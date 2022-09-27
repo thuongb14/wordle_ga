@@ -193,7 +193,7 @@ let gameModule = (() => {
     if(e.target.classList.contains('fa-circle-info')) {
       modal.classList.remove('hidden')
       guide.classList.remove('hidden')
-    } else if(e.target.classList.contains('fa-xmark')) {
+    } else if(e.target.classList.contains('fa-xmark')){
       modal.classList.add('hidden')
       guide.classList.add('hidden')
     }
