@@ -13,6 +13,7 @@ const box = document.querySelectorAll('.box');
 const keyBoard = document.querySelector('.keyboard');
 const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.content-modal');
+const guide = document.querySelector('.guide-modal')
 
 let gameModule = (() => {
   const handleKeyInput = (e) => {
@@ -55,7 +56,8 @@ let gameModule = (() => {
       }
       if (keyInput.id === 'delete') {
         deleteText();
-      } else {
+      }
+       else {
         return;
       }
     }
@@ -128,7 +130,7 @@ let gameModule = (() => {
           correctLetter.includes(box[i].textContent) &&
           box[i].classList.contains('valid')
         ) {
-          box[i].classList.add('invalid');
+          box[i].classList.replace('valid','invalid');
         }
       }
       updateKeyboard(correctLetter, validLetter, invalidLetter);
@@ -187,15 +189,21 @@ let gameModule = (() => {
     modalContent.classList.remove('hidden')
   };
 
-  const modalGuide = () => {
-    
+  const modalGuide = (e) => { 
+    if(e.target.classList.contains('fa-circle-info')) {
+      modal.classList.remove('hidden')
+      guide.classList.remove('hidden')
+    } else if(e.target.classList.contains('fa-xmark')) {
+      modal.classList.add('hidden')
+      guide.classList.add('hidden')
+    }
   }
 
   const checkWin = () => {
     let guessWord = guessArr.join('');
     if (correctWord === guessWord) {
       isGameActive = false;
-      modalWin();
+      setTimeout(modalWin, 800);
     } else if (currentRow == 5 && guessWord !== correctWord) {
       isGameActive = false;
       modalLose();
@@ -207,7 +215,7 @@ let gameModule = (() => {
       location.reload();
     }
   };
-  return { handleKeyInput, resetGame, handleKeyClick };
+  return { handleKeyInput, resetGame, handleKeyClick , modalGuide};
 })();
 
 window.addEventListener('keyup', function (e) {
@@ -216,6 +224,7 @@ window.addEventListener('keyup', function (e) {
 
 window.addEventListener('click', function (e) {
   gameModule.resetGame(e);
+  gameModule.modalGuide(e)
 });
 
 keyBoard.addEventListener('click', function (e) {
