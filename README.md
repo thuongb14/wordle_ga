@@ -19,9 +19,9 @@ https://thuongb14.github.io/wordle_ga/
 
 ### JS
 - The word for each game are chosen randomly from the given word list.
-- Controller of the currentRow, currenBoxId, numberGuessLeft and isGameActive to control the flow of the game, identify which row and which box the user are in.
-- User will interact with virtual keyboard or keyboard input to guess the letter.
-- After the currentRow has been filled with 5 letters, run checkGuess function to compare the guess word with the correct word and give hints to users. Also run checkWin if the user's guess is correct.
+- Controller of the currentRow, currenBoxId, numberGuessLeft and isGameActive to control the flow of the game, identify which row and which box the user is in.
+- User will interact with the virtual keyboard or the keyboard input to guess the letter.
+- After the currentRow has been filled with 5 letters, run checkGuess function to compare the guess word with the correct word and give hints to users. Also stop the game and run checkWin if the user's guess is correct, otherwise, resume the game and reset the controller to move to the next row.
 - Work with the View to append text on the box, handle player's click or input.
 
 ## Result
