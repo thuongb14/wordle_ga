@@ -81,6 +81,7 @@ let gameModule = (() => {
       box.forEach((item) => {
         if (item.dataset.row == currentRow && item.dataset.id == currentId) {
           item.textContent = key;
+          item.classList.add('popup-animation')
         }
       });
       guessArr.push(key);
@@ -97,6 +98,7 @@ let gameModule = (() => {
           item.dataset.id == currentId - 1
         ) {
           item.textContent = '';
+          item.classList.remove('popup-animation')
         }
       });
       numberWordLeft++;

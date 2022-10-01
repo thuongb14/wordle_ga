@@ -98,6 +98,10 @@ p {
   cursor: pointer;
 }
 
+.popup-animation {
+  animation: popup 0.1s ease
+}
+
 #row-1 {
   width: 450px;
 }
@@ -151,6 +155,15 @@ p {
   }
   to {
     background-color: var(--color-invalid);
+  }
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: scale(0.5)
   }
 }
 
