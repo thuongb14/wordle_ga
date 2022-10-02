@@ -108,24 +108,27 @@ let gameModule = (() => {
   };
 
   const checkGuess = () => {
+    let box = document.querySelectorAll(`[data-row="${currentRow}"]`);
     let guessWord = guessArr.join('');
     if (!validWords.includes(guessWord)) {
       alert('NOT A VALID WORD');
     } else {
-      let box = document.querySelectorAll(`[data-row="${currentRow}"]`);
       let correctLetter = [];
       let validLetter = [];
       let invalidLetter = [];
       for (let i = 0; i < correctArr.length; i++) {
         let position = correctArr.indexOf(guessArr[i]);
         if (position === -1) {
+          box[i].classList.add('flip');
           box[i].classList.add('invalid');
           invalidLetter.push(box[i].textContent);
         } else {
           if (correctArr[i] === guessArr[i]) {
+            box[i].classList.add('flip');
             box[i].classList.add('correct');
             correctLetter.push(box[i].textContent);
           } else {
+            box[i].classList.add('flip');
             box[i].classList.add('valid');
             validLetter.push(box[i].textContent);
           }
@@ -136,6 +139,7 @@ let gameModule = (() => {
           correctLetter.includes(box[i].textContent) &&
           box[i].classList.contains('valid')
         ) {
+          box[i].classList.add('flip');
           box[i].classList.replace('valid','invalid');
         }
       }
